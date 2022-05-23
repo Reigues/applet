@@ -7,7 +7,7 @@
 }
 
 .handler {
-    width: 10px;
+    width: 12px;
     padding: 0;
     cursor: ew-resize;
     flex: 0 0 auto;
@@ -16,10 +16,13 @@
 
 .handler::before {
     content: '';
+    position:absolute;
     display: block;
     width: 4px;
     height: 50px;
     background: #eee;
     margin: 0 auto;
+    top:50%;
+    transform: translateX(4px) translateY(-50%);
     border-radius: 10px;
 }

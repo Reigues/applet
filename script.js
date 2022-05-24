@@ -19,4 +19,8 @@ var trace1 = {
   
   var config = {responsive: true}
   
-  Plotly.newPlot('graph', data, layout, config );
+  Plotly.newPlot('graph', data, layout);
+
+  document.addEventListener("handlerdragging", (event) => {
+    Plotly.react('graph', data, layout);
+  });

@@ -3,6 +3,8 @@
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://unpkg.com/mathjs@10.5.3/lib/browser/math.js"></script>
+    <script src="temp.js"></script>
+    <script src="methods.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,11 @@
     <title>Applet</title>
 </head>
 <body style="margin:0px; padding:0px; overflow:hidden; height:100vh; display:flex" class="wrapper">
-    <iframe id="iframe" src="billiard/index.html" class="frame" style="height:100%; background: #eee; z-index: 2;" height="100%"></iframe><!--resize:horizontal; overflow:hiden; -->
+    <iframe id="billiard_frame" src="billiard/index.html" class="frame" style="height:100%; background: #eee; z-index: 2;" height="100%"></iframe><!--resize:horizontal; overflow:hiden; -->
     <div class="handler" style="z-index: 2;"></div>
-    <div style="position:absolute; left: 150px; background: red; height: 100%; width: calc(100% - 150px); z-index: 1;" id="graph"></div>
+    <div style="position:absolute; left: 150px; background: red; height: 100%; width: calc(100% - 150px); z-index: 1;" id="graph">
+        <button id="getData_button" style="position:absolute; top:20px;right: 20px; z-index: 5;">click</button>
+    </div>
 </body>
 <script src="dragbar.js"></script>
 <script src="script.js"></script>

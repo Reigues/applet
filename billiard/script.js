@@ -19,6 +19,11 @@ let arrowEnd = {
 let points=new Array(10)
 let last_direction=arrowEnd.arg
 
+function getData() {
+    return [points[0],arrowEnd.arg]
+}
+
+
 function getCoords(elem) { // crossbrowser version
     var box = elem.getBoundingClientRect();
 
@@ -194,7 +199,6 @@ function mouseMove(e) {
 
 canvas.onmousemove = mouseMove;
 canvas.onmousewheel = mouseMove;
-canvas.on
 
 canvas.onmousedown = function (e) {
     if (posInCursor == null && inCursor) {

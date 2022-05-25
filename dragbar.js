@@ -24,7 +24,7 @@ function bindIFrameMousemove(iframe){
   });
 };
 
-bindIFrameMousemove(iframe);
+bindIFrameMousemove(billiard_frame);
 
 var handlerDraggingEvent = new CustomEvent("handlerdragging", {
   detail: {},

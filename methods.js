@@ -361,10 +361,13 @@ function weierstrassRoots(g2, g3) {
     function cubicTrigSolution(p, q, n) {
 
         // p, q both negative in defining cubic
-
-        return mul(2 / sqrt(3), sqrt(p),
-            cos(sub(div(arccos(mul(3 * sqrt(3) / 2, q, pow(p, -3 / 2))), 3),
-                2 * pi * n / 3)));
+        if (p == 0) {
+            return mul(pow(-q,1/3),pow(complex(1/2,sqrt(3)/2),n))
+        } else {
+            return mul(2 / sqrt(3), sqrt(p),
+                cos(sub(div(arccos(mul(3 * sqrt(3) / 2, q, pow(p, -3 / 2))), 3),
+                    2 * pi * n / 3)));
+        }
     }
 
     g2 = div(g2, 4);

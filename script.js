@@ -26,13 +26,16 @@ document.addEventListener("handlerdragging", (event) => {
 });
 
 function getInitCoords(z){
-  var u = weierstrassP(z,1,1/27);
+  var u = weierstrassP(z,0,1/27);
   console.log(u)
 }
 
 getData_button.onclick = function () {
   var [point, direction] = billiard_frame.contentWindow.getData()
-  var v = math.complex({abs: 1, arg: direction})
-  var z = math.complex({re:point.x, im:point.y})
-  var [x, y] = getInitCoords(z)
+  var v = exp(mul(complex(0,1),direction))
+  console.log(mul(complex(0,1),direction))
+  console.log(v)
+  var z = complex(point.x, point.y)
+  z=100
+  /* var [x, y] =  */getInitCoords(z)
 }

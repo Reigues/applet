@@ -1,13 +1,7 @@
 var trace1 = {
-  type: 'bar',
   x: [1, 2, 3, 4],
   y: [5, 10, 2, 8],
-  marker: {
-    color: '#C8A2C8',
-    line: {
-      width: 2.5
-    }
-  }
+  mode: "lines"
 };
 
 var data = [trace1];
@@ -38,5 +32,17 @@ getData_button.onclick = function () {
   var [x, y] = getInitCoords(z).map(a => 
     div(a,mul(beta(1/3,1/3),v))
   );
-  console.log([x, y])
+  /* x=div(add(1,exp(complex(0,2*pi/3))),pow(sub(1,pow(complex(0,1),3)),1/3))
+  y=mul(x,complex(0,1)) */
+  console.log([x,y])
+  var coords = ode(((t,v)=> [pow(v[1], 2), pow(v[0], 2)]),[x, y],[0,100],0.001)
+
+  data = [{
+    x: coords.map(point=>(point[1].re!=0||point[1].im!=0) ? (div(point[2],point[1]).re) : (null)),
+    y: coords.map(point=>(point[1].re!=0||point[1].im!=0) ? (div(point[2],point[1]).im) : (null)),
+    mode: "lines"
+  }]
+  console.log(data)
+  Plotly.react('graph', data, layout);
+
 }

@@ -245,11 +245,17 @@ lineNumber_input.onchange=function(e){
 }
 p_input.onchange=function(){
     arrowEnd.arg=angleFromPQ()
+    /* var p = p_input.value
+    var q = q_input.value
+    lineNumber_input.value = Math.abs(2*p-q) + Math.abs(p-2*q) + Math.abs(p+q) */
     createPoints()
     draw()
 }
 q_input.onchange=function(){
     arrowEnd.arg=angleFromPQ()
+    /* var p = p_input.value
+    var q = q_input.value
+    lineNumber_input.value = Math.abs(2*p-q) + Math.abs(p-2*q) + Math.abs(p+q) */
     createPoints()
     draw()
 }

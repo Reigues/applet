@@ -3,6 +3,7 @@
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="methods.js"></script>
+    <script src="billiard-intersect.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,29 @@
     <title>Applet</title>
 </head>
 <body style="margin:0px; padding:0px; overflow:hidden; height:100vh; display:flex" class="wrapper">
-    <iframe id="billiard_frame" src="billiard/index.html" class="frame" style="height:100%; background: #eee; z-index: 2;" height="100%"></iframe><!--resize:horizontal; overflow:hiden; -->
+    <div id="billiard_frame" class="frame" style="position:relative; height:100%; background: #eee; z-index: 2; overflow-y:scroll;" height="100%">
+        <canvas id="canvas" width="900" height="600"></canvas>
+        <div style="position:absolute; left:10px; top:10px; width:400px;" class="wrapper">
+            <label for="lineNumber_input">Nombre de lignes = </label>
+            <input id="lineNumber_input" type="number" value="10" min="0"/>
+        </div>
+        <div style="position:absolute; left:10px; top:40px; width:400px;" class="wrapper">
+            <label for="range_input">Précision : </label>
+            <input type="range" min="0" max="10" value="0" id="range_input">
+        </div>
+        <div style="position:absolute; left:400px; top:10px; width:500px;" class="wrapper">
+            <label for="p_input">p = </label>
+            <input type="number" value="1" id="p_input" >
+            <label for="q_input">q = </label>
+            <input type="number" value="0" id="q_input">
+        </div>
+    </div><!--resize:horizontal; overflow:hiden; -->
     <div class="handler" style="z-index: 2;"></div>
-    <div style="position:absolute; left: 150px; background: red; height: 100%; width: calc(100% - 150px); z-index: 1;" id="graph">
+    <div style="position:absolute; left: 600px; background: red; height: 100%; width: calc(100% - 600px); z-index: 1;" id="graph">
         <button id="getData_button" style="position:absolute; top:20px;right: 20px; z-index: 5;">click</button>
     </div>
 </body>
+<script src="billiard-script.js"></script>
 <script src="dragbar.js"></script>
 <script src="script.js"></script>
 </html>

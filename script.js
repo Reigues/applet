@@ -26,7 +26,7 @@ function getInitCoords(z){
 }
 
 getData_button.onclick = function () {
-  var [point, direction] = billiard_frame.contentWindow.getData()
+  var [point, direction] = getData()
   var v = exp(complex(0,direction))
   var z = complex(point.x, point.y)
   var [x, y] = getInitCoords(z).map(a => 

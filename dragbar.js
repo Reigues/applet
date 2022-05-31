@@ -3,29 +3,6 @@ var wrapper = handler.closest('.wrapper');
 var boxA = wrapper.querySelector('.frame');
 var isHandlerDragging = false;
 
-function bindIFrameMousemove(iframe){
-    iframe.contentWindow.addEventListener('mousemove', function(event) {
-        var clRect = iframe.getBoundingClientRect();
-        var evt = new CustomEvent('mousemove', {bubbles: true, cancelable: false});
-
-        evt.clientX = event.clientX + clRect.left;
-        evt.clientY = event.clientY + clRect.top;
-
-        iframe.dispatchEvent(evt);
-    });
-    iframe.contentWindow.addEventListener('mouseup', function(event) {
-      var clRect = iframe.getBoundingClientRect();
-      var evt = new CustomEvent('mouseup', {bubbles: true, cancelable: false});
-
-      evt.clientX = event.clientX + clRect.left;
-      evt.clientY = event.clientY + clRect.top;
-
-      iframe.dispatchEvent(evt);
-  });
-};
-
-bindIFrameMousemove(billiard_frame);
-
 var handlerDraggingEvent = new CustomEvent("handlerdragging", {
   detail: {},
   bubbles: true,
@@ -34,7 +11,6 @@ var handlerDraggingEvent = new CustomEvent("handlerdragging", {
 });
 
 document.addEventListener('mousedown', function(e) {
-    e.preventDefault();
   // If mousedown event is fired from .handler, toggle flag to true
   if (e.target === handler) {
     isHandlerDragging = true;
@@ -42,7 +18,6 @@ document.addEventListener('mousedown', function(e) {
 });
 
 document.addEventListener('mousemove', function(e) {
-    e.preventDefault();
   // Don't do anything if dragging flag is false
   if (!isHandlerDragging) {
     return false;
@@ -55,7 +30,7 @@ document.addEventListener('mousemove', function(e) {
   var pointerRelativeXpos = e.clientX - containerOffsetLeft;
   
   // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
-  var boxAminWidth = 150;
+  var boxAminWidth = 600;
 
   // Resize box A
   // * 8px is the left/right spacing between .handler and its inner pseudo-element
@@ -68,7 +43,6 @@ document.addEventListener('mousemove', function(e) {
 });
 
 document.addEventListener('mouseup', function(e) {
-    e.preventDefault();
   // Turn off dragging flag when user mouse is up
   isHandlerDragging = false;
 });
